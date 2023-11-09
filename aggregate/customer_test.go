@@ -27,7 +27,11 @@ func TestCustomer_NewCustomer(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(tc.test, func(t *testing.T) {
-			
+			_, err := aggregate.NewCustomer(tc.name)
+
+			if err != tc.expectedErr {
+				t.Errorf("Expected error %v, got %v", tc.expectedErr, err)
+			}
 		})
 	}
 }
