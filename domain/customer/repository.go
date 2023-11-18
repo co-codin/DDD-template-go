@@ -1,10 +1,11 @@
+// Package Customer holds all the domain logic for the customer domain.
 package customer
 
 import (
-	"ddd-template/aggregate"
 	"errors"
 
 	"github.com/google/uuid"
+	"github.com/percybolmer/ddd-go/aggregate"
 )
 
 var (
@@ -16,6 +17,8 @@ var (
 	ErrUpdateCustomer = errors.New("failed to update the customer in the repository")
 )
 
+// CustomerRepository is a interface that defines the rules around what a customer repository
+// Has to be able to perform
 type CustomerRepository interface {
 	Get(uuid.UUID) (aggregate.Customer, error)
 	Add(aggregate.Customer) error
